@@ -1,4 +1,3 @@
-```markdown
 # AIDCARE Diyabet Hasta Yönetim Uygulaması
 
 ## 📌 Proje Açıklaması
@@ -13,8 +12,8 @@ Proje 3 ana klasörden oluşmaktadır:
 ### 1. Veritabanı (Database)
 
 - **PostgreSQL** üzerinde hasta bilgileri (`patients`) ve kan şekeri ölçümleri (`glucose_levels`) için iki ana tablo oluşturuldu.
-```
 
+```bash
 CREATE TABLE IF NOT EXISTS patients (
 id SERIAL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
@@ -39,6 +38,7 @@ sugar_value INTEGER
 ```
 
 ### 2. Backend Geliştirme
+
 - **Node.js + Express** kullanılarak REST API endpoint’leri geliştirildi:
   - `GET /patients` → Tüm hastaları listeleme
   - `GET /patients/:id` → Tek bir hastayı görüntüleme
@@ -49,6 +49,7 @@ sugar_value INTEGER
 - **Redis cache** ile tüm `GET` endpoint’leri **60 saniye** süreyle önbelleklendi.
 
 ### 3. Frontend
+
 - **Vue.js** kullanılarak doktor paneli tasarlandı.
 - **Panel Giriş Sayfası** (mock authentication, sadece test amaçlı)
 - **Doktor Paneli**:
@@ -67,18 +68,18 @@ sugar_value INTEGER
 ---
 
 ## 📂 Proje Klasör Yapısı
-```
 
+```bash
 AIDCARE/
 ├── backend/ # Node.js + Express backend kodları
 ├── db/ # PostgreSQL tablo oluşturma scriptleri
 ├── frontend/ # Vue.js doktor paneli
-
-````
+```
 
 ---
 
 ## ⚙️ Gereksinimler
+
 - **Docker Desktop** veya herhangi bir Docker ortamı
 - **Node.js**
 
@@ -91,7 +92,7 @@ AIDCARE/
 ```bash
 docker compose build backend db redis
 docker compose up backend db redis
-````
+```
 
 Veya tek satırda:
 
