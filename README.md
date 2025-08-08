@@ -11,7 +11,7 @@ Proje 3 ana klasörden oluşmaktadır:
 
 ### 1. Veritabanı (Database)
 
-- **PostgreSQL** üzerinde hasta bilgileri (`patients`) ve kan şekeri ölçümleri (`glucose_levels`) için iki ana tablo oluşturuldu.
+- **PostgreSQL** üzerinde hasta bilgileri (`patients`) ve kan şekeri ölçümleri (`sugar_levels`) için iki ana tablo oluşturuldu.
 
 ```bash
 CREATE TABLE IF NOT EXISTS patients (
@@ -42,6 +42,7 @@ sugar_value INTEGER
 - **Node.js + Express** kullanılarak REST API endpoint’leri geliştirildi:
   - `GET /patients` → Tüm hastaları listeleme
   - `GET /patients/:id` → Tek bir hastayı görüntüleme
+  - `GET /patients/:id/sugar-levels` → Hasta kan şeker ölçümlerini görüntüleme
   - `POST /patients` → Yeni hasta ekleme
   - `PUT /patients/:id` → Hasta bilgilerini güncelleme
   - `DELETE /patients/:id` → Hasta silme
@@ -89,6 +90,8 @@ AIDCARE/
 
 ### 1. Backend, Veritabanı ve Redis
 
+Backend, Veritabanı ve Redis hizmetleri docker container içinde çalışmakatadır.
+
 ```bash
 docker compose build backend db redis
 docker compose up backend db redis
@@ -98,6 +101,12 @@ Veya tek satırda:
 
 ```bash
 docker compose up backend db redis --build
+```
+
+Seed verileri ekleme:
+
+```bash
+docker-compose run backend node seed.js
 ```
 
 ### 2. Frontend
